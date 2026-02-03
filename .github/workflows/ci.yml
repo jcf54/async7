@@ -9,7 +9,7 @@ jobs:
       - uses: psf/black@stable
         with:
             options: --check .
-            src: "./src"
+            src: "./controller/src"
   analyze:
     runs-on: ubuntu-latest
     permissions:
@@ -27,7 +27,7 @@ jobs:
       - name: Run Bandit
         shell: bash
         run: |
-          bandit -c pyproject.toml -r ./src -f sarif -o results.sarif
+          bandit -c controller/pyproject.toml -r ./controller/src -f sarif -o results.sarif
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v4
         with:

@@ -5,7 +5,7 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: psf/black@stable
         with:
             options: --check .
@@ -15,15 +15,20 @@ jobs:
     permissions:
       security-events: write
     steps:
-      - name: Set up Python 3.13
+      - name: Set up Python3.13
         uses: actions/setup-python@v6
         with:
           python-version: 3.13
       - name: Install Bandit
         shell: bash
         run: pip install bandit[sarif,toml]
-      - name: Perform Bandit Analysis
-        uses: PyCQA/bandit-action@v1
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Run Bandit
+        shell: bash
+        run: |
+          bandit -c pyproject.toml -r ./src -f sarif -o results.sarif
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v4
         with:
-          targets: ./src
-          configfile: ./pyproject.toml
+          sarif_file: results.sarif

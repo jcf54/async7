@@ -20,7 +20,7 @@ class A7Implement(Async7Controller):
 a7_controller = A7Implement(
     pg_host="localhost",
     pg_user="joe",
-    pg_password="thisismypassword",
+    pg_password="thisismypassword",  # nosec B106 (for demo's sake)
     pg_database="async7",
     pg_schema="public",
     pg_port=5432,
@@ -28,4 +28,4 @@ a7_controller = A7Implement(
 app = a7_controller.get_fastapi_app()
 
 if __name__ == "__main__":
-    uvicorn.run("app:app", host="0.0.0.0", port=8001, reload=True)
+    uvicorn.run("app:app", host="0.0.0.0", port=8001, reload=True)  # nosec B104 (for demo's sake)

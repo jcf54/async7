@@ -28,4 +28,6 @@ a7_controller = A7Implement(
 app = a7_controller.get_fastapi_app()
 
 if __name__ == "__main__":
-    uvicorn.run("app:app", host="0.0.0.0", port=8001, reload=True)  # nosec B104 (for demo's sake)
+    uvicorn.run(
+        "app:app", host="0.0.0.0", port=8001, reload=True
+    )  # nosec B104 (for demo's sake)

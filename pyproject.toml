@@ -10,6 +10,7 @@ requires-python = ">=3.13,<4.0"
 dependencies = [
     "asyncpg (>=0.31.0,<0.32.0)",
     "litestar (>=2.19.0,<3.0.0)",
+    "uvloop (>=0.22.1,<0.23.0)",
 ]
 
 [tool.poetry]

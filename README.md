@@ -6,6 +6,8 @@ HL7 feeds from systems like LIMS and EPRs send messages in the order they need t
 
 If we can group messages by a unique patient index, we can process messages for different patients in parallel, while ensuring that messages for the same patient are processed in order. This will improve throughput while maintaining data integrity.
 
+This could be used for loads of different message types, with differing backend/infrastructure, so the plan it to make this effectively a base class that can be extended for different use cases. In my specific use case, this is being built to process ADT, SIU, and ORU messages from Oracle/Cerner Millennium EPR (ADT, SIU) and WinPath Enterprise LIMS (ORU), to convert them to FHIR and store them.
+
 ## Features
 
 -   Asynchronous message processing to increase general throughput

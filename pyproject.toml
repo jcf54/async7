@@ -3,7 +3,7 @@ name = "async7"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Joe Channing",email = "joseph.channing@ouh.nhs.uk"}
+    {name = "Joe Channing", email = "jc@f54.uk"}
 ]
 readme = "README.md"
 requires-python = ">=3.13,<4.0"
